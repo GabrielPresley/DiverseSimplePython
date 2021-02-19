@@ -18,7 +18,11 @@ while(True):
     break
   print("please enter a vaild input from this list ('cm', 'in', 'mi', 'km', 'kg', 'lb')")
 print("converting from", startUnit, "to", endUnit)
-
-input = float(input("please enter a value to convert: "))
+while True:
+  try:
+    input = float(input("please enter a value to convert: "))
+    break
+  except:
+    print("please input a valid number")
 
 print((input * coversion[startUnit]) / coversion[endUnit], endUnit)
