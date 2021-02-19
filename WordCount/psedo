@@ -1,0 +1,7 @@
+1. Start program
+2. ask user for string
+3. Strip trailing whitespace from text
+4. Split string into characters
+4.5 remove double characters
+5. Loop through array to test if element is a space character
+6. Increase counter if character is space

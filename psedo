@@ -1,6 +1,0 @@
-1) Start program
-2) as user for string
-3) Strip trailing whitespace from text
-4) Split string into characters
-5) Loop through string to test if element is a space character
-6) Increase counter if character is space

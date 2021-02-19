@@ -2,8 +2,8 @@ n = 1
 #
 text = list((input("Enter Text:")).rstrip())
 #
-prev = object()
-text = [prev:=v for v in text if prev!=v]
+object = object()
+text = [object:=v for v in text if object!=v]
 #
 for i in list(text):
     if i == ' ':
