@@ -11,6 +11,10 @@ for i in list(text):
 print(n)
 #
 # REGEX SOLUTION
+# This was my initial solution, but I
+# assume were supposed to use what we learned
+# in class.
+#
 # import re
 # text = input("Enter Text:")
 # x = re.findall("(?:\s+|$)", text, flags=0) # find all spaces and end of line
