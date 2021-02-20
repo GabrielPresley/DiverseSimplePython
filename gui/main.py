@@ -89,9 +89,34 @@ nameEntered.grid(column = 1, row = 1, padx = 30, pady = 0)
 tk.Button(tab2, text="Click Me", command= lifeSigns, width = 10).grid(column = 1, row = 2, padx = 0, pady = 0)
 
 
+#Tax Credit
+cost = tk.IntVar()
+income = tk.IntVar()
+lastPrimary = tk.IntVar()
+def homeLoan():
+    if cost.get() <= 800000 and income.get() <= 225000 and (lastPrimary.get() >= 3 or 1000 < lastPrimary.get() <= 2018):
+        ttk.Label(tab3, text = "you may be eligable to recieve \n The First-Time Home Buyer\n Tax Credit").grid(column = 0, row = 2, padx = 0, pady = 0)
+    else:
+        for i in range(10000):
+            print(("NO MONEY 4 U",)*i)
+
+ttk.Label(tab3, text = "Cost").grid(column = 0, row = 0, padx = 30, pady = 0)
+nameEntered = ttk.Entry(tab3, width = 15, textvariable = cost)
+nameEntered.grid(column = 0, row = 1, padx = 30, pady = 0)
+
+ttk.Label(tab3, text ="Income").grid(column = 1, row = 0, padx = 30, pady = 0)
+nameEntered = ttk.Entry(tab3, width = 15, textvariable = income)
+nameEntered.grid(column = 1, row = 1, padx = 30, pady = 0)
+
+ttk.Label(tab3, text ="lastPrimary").grid(column = 2, row = 0, padx = 30, pady = 0)
+nameEntered = ttk.Entry(tab3, width = 15, textvariable = lastPrimary)
+nameEntered.grid(column = 2, row = 1, padx = 30, pady = 0)
+
+tk.Button(tab3, text="Click Me", command= homeLoan, width = 10).grid(column = 1, row = 2, padx = 0, pady = 0)
+
 # ttk.Label(tab3, text ="tab3").grid(column = 0, row = 0, padx = 30, pady = 30)
 # ttk.Label(tab4, text ="tab4").grid(column = 0, row = 0, padx = 30, pady = 30)
 # ttk.Label(tab5, text ="tab5").grid(column = 0, row = 0, padx = 30, pady = 30)
 
 root.mainloop()
-#tk.Button(tab1, text="Click Me", command= show_alert).grid(column = 1, row = 0, padx = 30, pady = 0)
+#tk.Button(tab3, text="Click Me", command= show_alert).grid(column = 1, row = 0, padx = 30, pady = 0)
