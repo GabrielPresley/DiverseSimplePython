@@ -4,7 +4,7 @@ import re
 
 
 root = tk.Tk()
-root.title("Tab Widget")
+root.title("DiverseSimplePython")
 tabControl = ttk.Notebook(root)
 
 tab1 = ttk.Frame(tabControl)
