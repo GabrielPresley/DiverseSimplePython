@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import re
 
 
 root = tk.Tk()
@@ -114,9 +115,23 @@ nameEntered.grid(column = 2, row = 1, padx = 30, pady = 0)
 
 tk.Button(tab3, text="Click Me", command= homeLoan, width = 10).grid(column = 1, row = 2, padx = 0, pady = 0)
 
-# ttk.Label(tab3, text ="tab3").grid(column = 0, row = 0, padx = 30, pady = 30)
-# ttk.Label(tab4, text ="tab4").grid(column = 0, row = 0, padx = 30, pady = 30)
-# ttk.Label(tab5, text ="tab5").grid(column = 0, row = 0, padx = 30, pady = 30)
+# Word Count
+
+text = tk.StringVar()
+
+def wordCount():
+    x = re.findall("(?:\s+|$)", text.get(), flags=0) # find all spaces and end of line
+    print(len(x))
+    ttk.Label(tab5, text = (len(x),"words!")).grid(column = 0, row = 2, padx = 5, pady = 0)
+
+
+
+ttk.Label(tab5, text = "string").grid(column = 1, row = 0, padx = 30, pady = 0)
+nameEntered = ttk.Entry(tab5, width = 15, textvariable = text)
+nameEntered.grid(column = 1, row = 1, padx = 30, pady = 0)
+
+
+tk.Button(tab5, text="Click Me", command= wordCount, width = 10).grid(column = 1, row = 2, padx = 0, pady = 0)
 
 root.mainloop()
 #tk.Button(tab3, text="Click Me", command= show_alert).grid(column = 1, row = 0, padx = 30, pady = 0)
