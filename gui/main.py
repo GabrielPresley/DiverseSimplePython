@@ -65,15 +65,15 @@ def lifeSigns():
             breaths_low += (525600*25)
             breaths_high += (525600*60)
             beats += (67.5*525600)
-        if 1< i+1 <=4 :
+        if 1<= i <=4 :
             breaths_low += (525600*20)
             breaths_high += (525600*30)
             beats += (67.5*525600)
-        if 4< i+1 <14 :
+        if 4< i <14 :
             breaths_low += (525600*15)
             breaths_high += (525600*25)
             beats += (67.5*525600)
-        if 14< i+1 <18 :
+        if 14< i <18 :
             breaths_low += (525600*11)
             breaths_high += (525600*18)
             beats += (67.5*525600)
