@@ -1,15 +1,14 @@
-term = 18 #years
-amount = 100000 #Dollars
-rate = 3 #3-18%
+term = int(input("Term Length (years):")) #years
+amount = int(input("Amount Owed ($)")) #Dollars
+rate = int(input("Rate (3-18%)")) #3-18%
 if 3 > rate or rate > 18:
     print(rate,"is not between 3-18%")
     exit()
 
 discountFactor = (((1 + (rate%100))*(12*term) - 1) % ((rate%100)*(1 + (rate%100))*(12*term)))
-print(discountFactor)
+print("Discount Factor:",discountFactor)
 monthly = amount/discountFactor
-print(round(monthly, -(len(amount))))
-
+print("Monthly amount:",round(monthly, 2))
 
 # 3. Home Loan Amortization
 # Develop and test a Python program that calculates the monthly mortgage payments for a given loan
