@@ -115,6 +115,34 @@ nameEntered.grid(column = 2, row = 1, padx = 30, pady = 0)
 
 tk.Button(tab3, text="Click Me", command= homeLoan, width = 10).grid(column = 1, row = 2, padx = 0, pady = 0)
 
+#UnitConverter
+unitsIn = tk.StringVar(value = "pick a unit")
+unitsOut = tk.StringVar(value = "pick a unit")
+
+valueIn = tk.StringVar(value = "enter units")
+
+valueOut = tk.StringVar(value = "output will appear here")
+
+conversion = {"cm": 1, "in": 2.54, "mi": 160934, "km": 100000, "kg": 1, "lb": 0.453592}
+
+Output = ttk.Label(tab4, textvariable = valueOut).grid(row = 2, column = 1)
+
+def convertUnits():
+    global valueOut
+    try:
+        value = int(valueIn.get())
+        valueOut.set("output: " + str((value * conversion[unitsIn.get()]) / conversion[unitsOut.get()]) + " " + unitsOut.get())
+    except Exception as e:
+        print(e)
+        valueOut.set("please enter a valid number")
+
+tk.OptionMenu(tab4, unitsIn, "cm", "in", "mi", "km", "lb", "kg").grid(column = 0, row = 0)
+tk.OptionMenu(tab4, unitsOut, "cm", "in", "mi", "km", "lb", "kg").grid(column = 1, row = 0)
+
+tk.Entry(tab4, width = 15, textvariable = valueIn).grid(column = 2, row = 0)
+
+tk.Button(tab4, text="Click Me", command = convertUnits, width = 10).grid(column = 1, row = 1)
+
 # Word Count
 
 text = tk.StringVar()
