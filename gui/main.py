@@ -27,15 +27,25 @@ term = tk.IntVar()
 amount = tk.IntVar()
 rate = tk.IntVar()
 monthly = 0
+
+errorOut = tk.StringVar(value="")
 def homeLoan():
-    if 3 > rate.get() or rate.get() > 18:
-        print(rate.get(),"is not between 3-18%")
-    discountFactor = (((1 + (rate.get()%100))*(12*term.get()) - 1) % ((rate.get()%100)*(1 + (rate.get()%100))*(12*term.get())))
-    print("Discount Factor:",discountFactor)
-    ttk.Label(tab1, text = "Monthly Amount:").grid(column = 0, row = 2, padx = 30, pady = 0)
-    ttk.Label(tab1, text = round(monthly, 2)).grid(column = 0, row = 3, padx = 30, pady = 0)
-    ttk.Label(tab1, text = "Discount Factor:").grid(column = 2, row = 2, padx = 30, pady = 0)
-    ttk.Label(tab1, text = round(discountFactor, 2)).grid(column = 2, row = 3, padx = 30, pady = 0)
+    try:
+        if 3 > rate.get() or rate.get() > 18:
+            print(rate.get(),"is not between 3-18%")
+            raise("invaild rate")
+        discountFactor = (((1 + (rate.get()%100))*(12*term.get()) - 1) % ((rate.get()%100)*(1 + (rate.get()%100))*(12*term.get())))
+        print("Discount Factor:",discountFactor)
+        ttk.Label(tab1, text = "Monthly Amount:").grid(column = 0, row = 2, padx = 30, pady = 0)
+        ttk.Label(tab1, text = round(monthly, 2)).grid(column = 0, row = 3, padx = 30, pady = 0)
+        ttk.Label(tab1, text = "Discount Factor:").grid(column = 2, row = 2, padx = 30, pady = 0)
+        ttk.Label(tab1, text = round(discountFactor, 2)).grid(column = 2, row = 3, padx = 30, pady = 0)
+
+        errorOut.set("")
+    except:
+        errorOut.set("please enter valid values")
+
+ttk.Label(tab1, textvariable=errorOut).grid(column = 1, row =3)
 
 ttk.Label(tab1, text = "Term").grid(column = 0, row = 0, padx = 30, pady = 0)
 nameEntered = ttk.Entry(tab1, width = 15, textvariable = term)
