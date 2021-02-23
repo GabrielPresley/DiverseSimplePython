@@ -40,7 +40,7 @@ def homeLoan():
         #D = ((1 + (rate.get()/100))*(term.get()*12) - 1) / (rate.get()/100)*(1 + (rate.get()/100))*(term.get()*12)
         #print(D)
         #monthly.set(amount.get()/discountFactor.get())
-
+#https://www.coursehero.com/tutors-problems/Computer-Science/12726193--D4py-Home-Loan-Amortization-Develop-and-test-a-Python-program/#
         errorOut.set("")
     except:
         errorOut.set("please enter valid values")
