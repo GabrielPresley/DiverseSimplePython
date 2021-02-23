@@ -82,23 +82,23 @@ def lifeSigns():
             raise("yo, they're too old")
         for i in range(aged):
             if 0 >= i:
-                breaths_low += (525600*25)
-                breaths_high += (525600*60)
-                beats += (67.5*525600)
+                breaths_low += (25)
+                breaths_high += (60)
+                beats += (67.5)
             if 1<= i <=4 :
-                breaths_low += (525600*20)
-                breaths_high += (525600*30)
-                beats += (67.5*525600)
+                breaths_low += (20)
+                breaths_high += (30)
+                beats += (67.5)
             if 4< i <14 :
-                breaths_low += (525600*15)
-                breaths_high += (525600*25)
-                beats += (67.5*525600)
+                breaths_low += (15)
+                breaths_high += (25)
+                beats += (67.5)
             if 14< i <18 :
-                breaths_low += (525600*11)
-                breaths_high += (525600*18)
-                beats += (67.5*525600)
-        outputbreaths = 'you have breathed:\n' + str(breaths_low) + "-" + str(breaths_high) + '\ntimes!'
-        outputbeats = "Heart Beated:\n" + str(beats) + "\ntimes!"
+                breaths_low += (11)
+                breaths_high += (18)
+                beats += (67.5)
+        outputbreaths = 'you have breathed:\n' + str(breaths_low * 525600) + "-" + str(breaths_high * 525600) + '\ntimes!'
+        outputbeats = "Heart Beated:\n" + str(beats * 525600) + "\ntimes!"
         ttk.Label(tab2, text = outputbreaths).grid(column = 0, row = 2, padx = 30, pady = 0)
         ttk.Label(tab2, text = outputbeats).grid(column = 2, row = 2, padx = 30, pady = 0)
         errorOut2.set("")
