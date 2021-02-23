@@ -26,7 +26,8 @@ tabControl.pack(expand = 1, fill ="both")
 term = tk.IntVar()
 amount = tk.IntVar()
 rate = tk.IntVar()
-monthly = 0
+monthly = tk.IntVar(value = 0)
+discountFactor = tk.IntVar(value = 0)
 
 errorOut = tk.StringVar(value="")
 def homeLoan():
@@ -34,17 +35,18 @@ def homeLoan():
         if 3 > rate.get() or rate.get() > 18:
             print(rate.get(),"is not between 3-18%")
             raise("invaild rate")
-        discountFactor = (((1 + (rate.get()%100))*(12*term.get()) - 1) % ((rate.get()%100)*(1 + (rate.get()%100))*(12*term.get())))
-        monthly = amount.get()/discountFactor
-
-        ttk.Label(tab1, text = "Monthly Amount:").grid(column = 0, row = 2, padx = 30, pady = 0)
-        ttk.Label(tab1, text = round(monthly, 2)).grid(column = 0, row = 3, padx = 30, pady = 0)
-        ttk.Label(tab1, text = "Discount Factor:").grid(column = 2, row = 2, padx = 30, pady = 0)
-        ttk.Label(tab1, text = round(discountFactor, 2)).grid(column = 2, row = 3, padx = 30, pady = 0)
+        discountFactor.set(((1 + (rate.get()%100))*(12*term.get()) - 1) % ((rate.get()%100)*(1 + (rate.get()%100))*(12*term.get())))
+        monthly.set(amount.get()%discountFactor.get())
 
         errorOut.set("")
     except:
         errorOut.set("please enter valid values")
+
+ttk.Label(tab1, text = "Monthly Amount:").grid(column = 0, row = 2, padx = 30, pady = 0)
+ttk.Label(tab1, textvariable = monthly).grid(column = 0, row = 3, padx = 30, pady = 0)
+
+ttk.Label(tab1, text = "Discount Factor:").grid(column = 2, row = 2, padx = 30, pady = 0)
+ttk.Label(tab1, textvariable = discountFactor).grid(column = 2, row = 3, padx = 30, pady = 0)
 
 tk.Label(tab1, textvariable=errorOut).grid(column = 1, row =3)
 
@@ -120,8 +122,7 @@ def homeLoan():
         if cost.get() <= 800000 and income.get() <= 225000 and (lastPrimary.get() >= 3 or 1000 < lastPrimary.get() <= 2018):
             ttk.Label(tab3, text = "you may be eligable to recieve \n The First-Time Home Buyer\n Tax Credit").grid(column = 0, row = 2, padx = 0, pady = 0)
         else:
-            for i in range(10000):
-                print(("NO MONEY 4 U",)*i)
+            ttk.Label(tab3, text = "you mayn't eligable to recieve \n The First-Time Home Buyer\n Tax Credit").grid(column = 0, row = 2, padx = 0, pady = 0)
     except:
         errorOut3.set("please enter valid numbers only")
 
