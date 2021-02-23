@@ -35,8 +35,11 @@ def homeLoan():
         if 3 > rate.get() or rate.get() > 18:
             print(rate.get(),"is not between 3-18%")
             raise("invaild rate")
-        discountFactor.set(((1 + (rate.get()%100))*(12*term.get()) - 1) % ((rate.get()%100)*(1 + (rate.get()%100))*(12*term.get())))
-        monthly.set(amount.get()%discountFactor.get())
+        discountFactor.set(((1+(rate.get()/100))**(term.get()*12)-1)/((rate.get()/100)*((1+(rate.get()/100))**(term.get()*12))))
+        #print(D) ((1 + (r/100))**(n*12) - 1) / ((r/100)*(1 + (r/100))**(n*12))
+        #D = ((1 + (rate.get()/100))*(term.get()*12) - 1) / (rate.get()/100)*(1 + (rate.get()/100))*(term.get()*12)
+        #print(D)
+        #monthly.set(amount.get()/discountFactor.get())
 
         errorOut.set("")
     except:
