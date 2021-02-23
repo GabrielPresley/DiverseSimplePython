@@ -35,7 +35,8 @@ def homeLoan():
             print(rate.get(),"is not between 3-18%")
             raise("invaild rate")
         discountFactor = (((1 + (rate.get()%100))*(12*term.get()) - 1) % ((rate.get()%100)*(1 + (rate.get()%100))*(12*term.get())))
-        print("Discount Factor:",discountFactor)
+        monthly = amount.get()/discountFactor
+
         ttk.Label(tab1, text = "Monthly Amount:").grid(column = 0, row = 2, padx = 30, pady = 0)
         ttk.Label(tab1, text = round(monthly, 2)).grid(column = 0, row = 3, padx = 30, pady = 0)
         ttk.Label(tab1, text = "Discount Factor:").grid(column = 2, row = 2, padx = 30, pady = 0)
@@ -152,7 +153,7 @@ valueOut = tk.StringVar(value = "output will appear here")
 
 conversion = {"cm": 1, "in": 2.54, "mi": 160934, "km": 100000, "kg": 1, "lb": 0.453592}
 
-Output = ttk.Label(tab4, textvariable = valueOut).grid(row = 2, column = 1)
+Output = ttk.Label(tab4, textvariable = valueOut).grid(row = 1, column = 2)
 
 def convertUnits():
     global valueOut
