@@ -45,7 +45,7 @@ def homeLoan():
     except:
         errorOut.set("please enter valid values")
 
-ttk.Label(tab1, textvariable=errorOut).grid(column = 1, row =3)
+tk.Label(tab1, textvariable=errorOut).grid(column = 1, row =3)
 
 ttk.Label(tab1, text = "Term").grid(column = 0, row = 0, padx = 30, pady = 0)
 nameEntered = ttk.Entry(tab1, width = 15, textvariable = term)
@@ -65,7 +65,7 @@ tk.Button(tab1, text="Click Me", command= homeLoan, width = 10).grid(column = 1,
 # life Signs
 age = tk.IntVar()
 
-errorOut = tk.StringVar(value = "")
+errorOut2 = tk.StringVar(value = "")
 
 def lifeSigns():
     try:
@@ -94,11 +94,11 @@ def lifeSigns():
         outputbeats = "Heart Beated:\n" + str(beats) + "\ntimes!"
         ttk.Label(tab2, text = outputbreaths).grid(column = 0, row = 2, padx = 30, pady = 0)
         ttk.Label(tab2, text = outputbeats).grid(column = 2, row = 2, padx = 30, pady = 0)
-        errorOut.set("")
+        errorOut2.set("")
     except:
-        errorOut.set("please enter a vailid age")
+        errorOut2.set("please enter a valid age")
 
-ttk.Label(tab2, textvariable = errorOut, width = 30).grid(column = 0) # just a spacer
+tk.Label(tab2, textvariable = errorOut2, width = 30).grid(column = 0) # just a spacer
 ttk.Label(tab2, text ="Age 0-18").grid(column = 1, row = 0, padx = 30, pady = 0)
 nameEntered = ttk.Entry(tab2, width = 15, textvariable = age)
 nameEntered.grid(column = 1, row = 1, padx = 30, pady = 0)
@@ -111,20 +111,20 @@ cost = tk.IntVar()
 income = tk.IntVar()
 lastPrimary = tk.IntVar()
 
-errorOut = tk.StringVar(value = "")
+errorOut3 = tk.StringVar(value = "")
 
 def homeLoan():
     try:
-        errorOut.set("");
+        errorOut3.set("");
         if cost.get() <= 800000 and income.get() <= 225000 and (lastPrimary.get() >= 3 or 1000 < lastPrimary.get() <= 2018):
             ttk.Label(tab3, text = "you may be eligable to recieve \n The First-Time Home Buyer\n Tax Credit").grid(column = 0, row = 2, padx = 0, pady = 0)
         else:
             for i in range(10000):
                 print(("NO MONEY 4 U",)*i)
     except:
-        errorOut.set("please enter valid numbers only")
+        errorOut3.set("please enter valid numbers only")
 
-ttk.Label(tab3, textvariable = errorOut).grid(row = 2, column = 2)
+tk.Label(tab3, textvariable = errorOut3).grid(row = 2, column = 2)
 
 ttk.Label(tab3, text = "Cost").grid(column = 0, row = 0, padx = 30, pady = 0)
 nameEntered = ttk.Entry(tab3, width = 15, textvariable = cost)
