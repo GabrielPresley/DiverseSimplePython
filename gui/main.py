@@ -78,6 +78,8 @@ def lifeSigns():
         breaths_low = breaths_high = beats = 0
 
         print(breaths_low)
+        if(aged > 18):
+            raise("yo, they're too old")
         for i in range(aged):
             if 0 >= i:
                 breaths_low += (525600*25)
