@@ -4,7 +4,7 @@
 on tab selection, load user interface for selected tab
 
 in tab 1, on click of button
-	load provided values and calculate and display loan monthly payment and discount ammounts
+	load provided values and calculate and display loan monthly payment and discount amounts
 	if this is not possible, display "please enter valid values"
 
 in tab 2, on click of button
@@ -13,8 +13,8 @@ in tab 2, on click of button
 
 in tab 3, on click of button
 	load provided values and checks whether or not the user meets the requirement for home loan tax credits
-	if they do, display "you may be eligibal to recieve first time home owners tax credit"
-	if not, print "NO MONEY 4 YOU" alot
+	if they do, display "you may be eligible to receive first time home owners tax credit"
+	if not, print "you may'nt be eligible to receive first time home owners tax credit"
 	if not possible, display "please enter valid values"
 
 in tab 4, on click of button
