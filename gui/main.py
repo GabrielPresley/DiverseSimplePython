@@ -41,6 +41,8 @@ def homeLoan():
         errorOut.set("")
     except:
         errorOut.set("please enter valid values")
+        monthly.set(0)
+        discountFactor.set(0)
 
 ttk.Label(tab1, text = "Monthly Amount:").grid(column = 0, row = 2, padx = 30, pady = 0)
 ttk.Label(tab1, textvariable = monthly).grid(column = 0, row = 3, padx = 30, pady = 0)
