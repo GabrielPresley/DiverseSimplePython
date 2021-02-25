@@ -35,14 +35,48 @@ def homeLoan():
         if 3 > rate.get() or rate.get() > 18:
             print(rate.get(),"is not between 3-18%")
             raise("invaild rate")
-        discountFactor.set(((1+(rate.get()/100)/12)**(term.get()*12)-1)/((rate.get()/100)/12*((1+(rate.get()/100)/12)**(term.get()*12))))
+        discountFactor.set(round(((1+(rate.get()/100)/12)**(term.get()*12)-1)/((rate.get()/100)/12*((1+(rate.get()/100)/12)**(term.get()*12))), 2))
         #print(D) ((1 + ((r/100)/12))**(n*12) - 1) / (((r/100)/12)*(1 + ((r/100)/12))**(n*12))
         #D = ((1 + (rate.get()/100))*(term.get()*12) - 1) / (rate.get()/100)*(1 + (rate.get()/100))*(term.get()*12)
         #print(D)
-        #monthly.set(amount.get()/discountFactor.get())
+        monthly.set(round(amount.get()/discountFactor.get(), 2))
 #https://www.coursehero.com/tutors-problems/Computer-Science/12726193--D4py-Home-Loan-Amortization-Develop-and-test-a-Python-program/#
-        errorOut.set("")
-    except:
+        errorOut.set("table has been writen to C:/Users/Public/Documents/loanOut.txt")
+
+        outarray = []
+
+        monthpay = monthly.get()
+
+        discount = discountFactor.get()
+
+        total = amount.get()
+
+        for i in range(term.get()*12):
+            out2 = [0, 0, 0, 0]
+            out2[0] = i + 1
+            out2[1] = str(monthpay).ljust(7, ' ')
+            out2[2] = round(monthpay * (rate.get()/100), 2)
+            total = round(total - (monthpay - out2[2]), 2)
+            out2[3] = total
+            discount = round(((1+(rate.get()/100)/12)**(term.get()*12 - i)-1)/((rate.get()/100)/12*((1+(rate.get()/100)/12)**(term.get()*12 - i))), 2)
+
+            monthpay = round(total/discount, 2)
+
+            outarray.append(out2)
+
+        outFile = open("C:/Users/Public/Documents/loanOut.txt", "w")
+
+        outFile.write("month\t|payment\t|in pay\t|balance\n")
+
+        for i in outarray:
+            for a in i:
+                outFile.write(str(a) + "\t|")
+            outFile.write("\n")
+
+        outFile.close()
+            
+    except Exception as e:
+        print(e)
         errorOut.set("please enter valid values")
         monthly.set(0)
         discountFactor.set(0)
@@ -175,7 +209,7 @@ def convertUnits():
 tk.OptionMenu(tab4, unitsIn, "cm", "in", "mi", "km", "lb", "kg").grid(column = 0, row = 0)
 tk.OptionMenu(tab4, unitsOut, "cm", "in", "mi", "km", "lb", "kg").grid(column = 1, row = 0)
 
-tk.Entry(tab4, width = 15, textvariable = valueIn).grid(column = 2, row = 0)
+tk.Label(tab4, width = 15, textvariable = valueIn).grid(column = 2, row = 0)
 
 tk.Button(tab4, text="Click Me", command = convertUnits, width = 10).grid(column = 1, row = 1)
 
@@ -191,8 +225,8 @@ def wordCount():
 
 
 ttk.Label(tab5, text = "string").grid(column = 1, row = 0, padx = 30, pady = 0)
-nameEntered = ttk.Entry(tab5, width = 15, textvariable = text)
-nameEntered.grid(column = 1, row = 1, padx = 30, pady = 0)
+nameEntered = ttk.Entry(tab5, width = root.winfo_reqwidth(), textvariable = text)
+nameEntered.grid(column = 1, row = 1, padx = 30, pady = 0, ipady=10)
 
 
 tk.Button(tab5, text="Click Me", command= wordCount, width = 10).grid(column = 1, row = 2, padx = 0, pady = 0)
