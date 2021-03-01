@@ -215,19 +215,20 @@ tk.Button(tab4, text="Click Me", command = convertUnits, width = 10).grid(column
 
 # Word Count
 
-text = tk.StringVar()
+scrollbar = tk.Scrollbar(tab5)
+scrollbar.grid(column=2, row=1, sticky="nsew")
+
+text = tk.Text(tab5, height=5, width=50, yscrollcommand=scrollbar.set)
+text.grid(column=1, row=1)
+
+scrollbar.config(command=text.yview)
 
 def wordCount():
-    x = re.findall("(?:\s+|$)", text.get(), flags=0) # find all spaces and end of line
-    print(len(x))
-    ttk.Label(tab5, text = (len(x),"words!")).grid(column = 0, row = 2, padx = 5, pady = 0)
-
-
+    x = re.findall("(?:\s+|$)", text.get("1.0", "end"), flags=0) # find all spaces and end of line
+    print(len(x) - 1)
+    ttk.Label(tab5, text = (len(x) - 1,"words!")).grid(column = 0, row = 2, padx = 5, pady = 0)
 
 ttk.Label(tab5, text = "string").grid(column = 1, row = 0, padx = 30, pady = 0)
-nameEntered = ttk.Entry(tab5, width = root.winfo_reqwidth(), textvariable = text)
-nameEntered.grid(column = 1, row = 1, padx = 30, pady = 0, ipady=10)
-
 
 tk.Button(tab5, text="Click Me", command= wordCount, width = 10).grid(column = 1, row = 2, padx = 0, pady = 0)
 
